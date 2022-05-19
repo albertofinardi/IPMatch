@@ -6,6 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SubnetmaskCalculatorComponent } from './subnetmask-calculator/subnetmask-calculator.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirePerformanceModule, PerformanceMonitoringService } from '@angular/fire/compat/performance';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiGXdmZB1URwEM8GSsxwpsEUn7ykN4NkI",
+  authDomain: "ipmatch.firebaseapp.com",
+  projectId: "ipmatch",
+  storageBucket: "ipmatch.appspot.com",
+  messagingSenderId: "905402177893",
+  appId: "1:905402177893:web:2ddeb32733a298057b298c",
+  measurementId: "G-XCYN7L5HWK"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +28,11 @@ import { SubnetmaskCalculatorComponent } from './subnetmask-calculator/subnetmas
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirePerformanceModule,
   ],
-  providers: [],
+  providers: [PerformanceMonitoringService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
