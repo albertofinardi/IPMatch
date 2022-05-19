@@ -8,6 +8,7 @@ import { SubnetmaskCalculatorComponent } from './subnetmask-calculator/subnetmas
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirePerformanceModule, PerformanceMonitoringService } from '@angular/fire/compat/performance';
+import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/compat/analytics';
 
 
 const firebaseConfig = {
@@ -31,8 +32,9 @@ const firebaseConfig = {
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirePerformanceModule,
+    AngularFireAnalyticsModule
   ],
-  providers: [PerformanceMonitoringService],
+  providers: [PerformanceMonitoringService, ScreenTrackingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
