@@ -4,11 +4,11 @@ declare var require: any;
 var IpSubnetCalculator = require( 'ip-subnet-calculator' );
 
 @Component({
-  selector: 'app-subnetmask-calculator',
-  templateUrl: './subnetmask-calculator.component.html',
-  styleUrls: ['./subnetmask-calculator.component.css']
+  selector: 'app-cidr-calculator',
+  templateUrl: './cidr-calculator.component.html',
+  styleUrls: ['./cidr-calculator.component.css']
 })
-export class SubnetmaskCalculatorComponent{
+export class CidrCalculatorComponent{
 
   constructor() { }
 
@@ -30,7 +30,7 @@ export class SubnetmaskCalculatorComponent{
 
   onSubmit(){
     this.reset()
-    var result = IpSubnetCalculator.calculateCIDRPrefix(this.form.controls['ip'].value, this.form.controls['mask'].value)
+    var result = IpSubnetCalculator.calculateSubnetMask(this.form.controls['ip'].value, this.form.controls['mask'].value)
     this.range = result.ipLowStr + ' - ' + result.ipHighStr;
     this.mask = result.prefixMaskStr;
     this.prefix = '/' + result.prefixSize;
@@ -38,8 +38,7 @@ export class SubnetmaskCalculatorComponent{
   }
 
   validIp(){
-    console.log(IpSubnetCalculator.toDecimal( '255.255.254.0' ))
-    return IpSubnetCalculator.isIp(this.form.controls['ip'].value) && IpSubnetCalculator.isIp(this.form.controls['mask'].value)
+    return IpSubnetCalculator.isIp(this.form.controls['ip'].value) && this.form.controls['mask'].value != ""
   }
 
   

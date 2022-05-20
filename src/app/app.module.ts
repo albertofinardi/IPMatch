@@ -10,12 +10,18 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirePerformanceModule, PerformanceMonitoringService } from '@angular/fire/compat/performance';
 import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/compat/analytics';
 import { environment } from 'src/environments/environment.prod';
+import { CidrCalculatorComponent } from './cidr-calculator/cidr-calculator.component';
+import { CidrToMaskComponent } from './cidr-to-mask/cidr-to-mask.component';
+import { CidrHostComponent } from './cidr-host/cidr-host.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubnetmaskCalculatorComponent
+    SubnetmaskCalculatorComponent,
+    CidrCalculatorComponent,
+    CidrToMaskComponent,
+    CidrHostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<div class="container-fluid mt-3">
+    <h1>Host CIDR</h1>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="mb-3">
+        <label for="hostInput">Host number (special addresses not included)</label>
+        <input type="number" class="form-control" id="hostInput" formControlName="host"
+          placeholder="Enter number of host">
+      </div>
+      <div *ngIf="!hostValid()">
+        <label class="text-danger mb-3">Number of host not valid</label><br>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!hostValid()">Calculate</button>
+    </form>
+  
+  
+    <h3 *ngIf="ready" class="mt-5">Result</h3>
+    <table *ngIf="ready" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">CIDR</th>
+          <th scope="col">Available Hosts</th>
+          <th scope="col">Host number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{cidr}}</th>
+          <td>{{available}}</td>
+          <td>{{this.form.controls['host'].value}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  

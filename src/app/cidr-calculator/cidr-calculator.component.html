@@ -1,0 +1,79 @@
+<div class="container-fluid mt-3">
+    <h1>CIDR Range</h1>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="mb-3">
+        <label for="ipInput">IP address</label>
+        <input type="text" class="form-control" id="ipInput" formControlName="ip"
+          placeholder="Enter IP Address (Decimal notation)">
+      </div>
+      <div class="mb-3">
+        <label for="maskInput">Subnetmask</label>
+        <select name="maskInput" id="maskInput" class="form-select" placeholder="CIDR Subnet Mask" formControlName="mask">
+            <option value="" disabled="" selected="">Select Subnet Mask</option>
+            <option value="24">/24</option>
+            <option value="16">/16</option>
+            <option value="8">/8</option>
+            <option value="" disabled="">----------------------</option>
+            <option value="0">/0</option>
+            <option value="1">/1</option>
+            <option value="2">/2</option>
+            <option value="3">/3</option>
+            <option value="4">/4</option>
+            <option value="5">/5</option>
+            <option value="6">/6</option>
+            <option value="7">/7</option>
+            <option value="8">/8</option>
+            <option value="9">/9</option>
+            <option value="10">/10</option>
+            <option value="11">/11</option>
+            <option value="12">/12</option>
+            <option value="13">/13</option>
+            <option value="14">/14</option>
+            <option value="15">/15</option>
+            <option value="16">/16</option>
+            <option value="17">/17</option>
+            <option value="18">/18</option>
+            <option value="19">/19</option>
+            <option value="20">/20</option>
+            <option value="1">/21</option>
+            <option value="2">/22</option>
+            <option value="3">/23</option>
+            <option value="4">/24</option>
+            <option value="5">/25</option>
+            <option value="6">/26</option>
+            <option value="7">/27</option>
+            <option value="8">/28</option>
+            <option value="9">/29</option>
+            <option value="0">/20</option>
+            <option value="1">/31</option>
+            <option value="2">/32</option>
+        </select>
+      </div>
+      <div *ngIf="!validIp()">
+        <label class="text-danger mb-3">IP address or CIDR not valid</label><br>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!validIp()">Calculate</button>
+    </form>
+  
+  
+    <h3 *ngIf="ready" class="mt-5">Result</h3>
+    <table *ngIf="ready" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">IP Range</th>
+          <th scope="col">Subnetmask</th>
+          <th scope="col">CIDR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{range}}</th>
+          <td>{{mask}}</td>
+          <td>{{prefix}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  
