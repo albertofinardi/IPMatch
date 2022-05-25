@@ -1,12 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">IP Match</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" routerLink="/subnet-range" routerLinkActive="active" >Subnetmask</a>
+        <a class="nav-link" routerLink="/subnet-range" routerLinkActive="active">Subnetmask</a>
         <a class="nav-link" routerLink="/cidr-range" routerLinkActive="active">CIDR</a>
         <a class="nav-link" routerLink="/host-to-cidr" routerLinkActive="active">Host</a>
         <a class="nav-link" routerLink="/cidr-to-mask" routerLinkActive="active">Utility</a>
@@ -15,13 +16,34 @@
   </div>
 </nav>
 
+<div class="container-fluid" *ngIf="modalVersion">
+  <div class="alert alert-secondary alert-dismissible fade show">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    A new version of this app is available. <a href="" (click)="updateVersion()">Update now</a>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="modalPwaPlatform === 'ANDROID' || modalPwaPlatform === 'IOS'">
+  <div class="alert alert-primary alert-dismissible fade show">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <!-- Android -->
+    <div *ngIf="modalPwaPlatform === 'ANDROID'" (click)="addToHomeScreen()">
+      Add this app to home screen.
+    </div>
+    <!-- iOS with Safari -->
+    <div *ngIf="modalPwaPlatform === 'IOS'">
+      To install this app on your device, tap the "Menu" button and then "Add to home screen".
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
 
 <footer class="bg-light text-center text-lg-start fixed-bottom">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(215, 215, 215, 0.2);">
-      © 2022 Copyright:
-      <a href="https://github.com/albertofinardi" target="_blank" style="text-decoration: none;" >Alberto Finardi</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(215, 215, 215, 0.2);">
+    <div [ngClass]="modalPwaPlatform === 'ANDROID' || modalPwaPlatform === 'IOS-Standalone' ? 'mb-3' : ''">© 2022 Copyright:
+    <a href="https://github.com/albertofinardi" target="_blank" style="text-decoration: none;">Alberto Finardi</a></div>
+  </div>
+  <!-- Copyright -->
+</footer>

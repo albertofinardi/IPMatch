@@ -38,7 +38,6 @@ export class SubnetmaskCalculatorComponent{
   }
 
   validIp(){
-    console.log(IpSubnetCalculator.toDecimal( '255.255.254.0' ))
     return IpSubnetCalculator.isIp(this.form.controls['ip'].value) && IpSubnetCalculator.isIp(this.form.controls['mask'].value)
   }
 

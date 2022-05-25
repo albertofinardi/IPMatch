@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment.prod';
 import { CidrCalculatorComponent } from './cidr-calculator/cidr-calculator.component';
 import { CidrToMaskComponent } from './cidr-to-mask/cidr-to-mask.component';
 import { CidrHostComponent } from './cidr-host/cidr-host.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -29,7 +30,13 @@ import { CidrHostComponent } from './cidr-host/cidr-host.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirePerformanceModule,
-    AngularFireAnalyticsModule
+    AngularFireAnalyticsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [PerformanceMonitoringService, ScreenTrackingService],
   bootstrap: [AppComponent]
