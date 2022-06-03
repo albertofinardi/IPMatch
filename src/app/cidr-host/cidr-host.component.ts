@@ -11,6 +11,7 @@ export class CidrHostComponent {
   constructor() { }
 
   ready = false;
+  host = ''
   form = new FormGroup({
     host: new FormControl('')
     }
@@ -28,6 +29,7 @@ export class CidrHostComponent {
     var hostID = Math.ceil(Math.log2(number))
     this.cidr = '/' + (32 - hostID).toString()
     this.available = Math.pow(2, hostID)
+    this.host = this.form.controls['host'].value
     this.ready = true
   }
 

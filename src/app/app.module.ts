@@ -15,6 +15,7 @@ import { CidrToMaskComponent } from './cidr-to-mask/cidr-to-mask.component';
 import { CidrHostComponent } from './cidr-host/cidr-host.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PublicOrPrivateComponent } from './public-or-private/public-or-private.component';
+import { WildcardComponent } from './wildcard/wildcard.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PublicOrPrivateComponent } from './public-or-private/public-or-private.
     CidrCalculatorComponent,
     CidrToMaskComponent,
     CidrHostComponent,
-    PublicOrPrivateComponent
+    PublicOrPrivateComponent,
+    WildcardComponent
   ],
   imports: [
     BrowserModule,

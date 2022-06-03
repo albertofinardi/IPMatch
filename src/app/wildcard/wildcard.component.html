@@ -1,0 +1,34 @@
+<div class="container-fluid mt-3">
+    <h1>Inverse Netmask</h1>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="mb-3">
+        <label for="hostInput">Subnetmask</label>
+        <input type="text" class="form-control" id="hostInput" formControlName="netmask"
+          placeholder="Enter SubnetMask (Decimal notation)">
+      </div>
+      <div *ngIf="!netmaskValid()">
+        <label class="text-danger mb-3">Netmask not valid</label><br>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!netmaskValid()">Calculate</button>
+    </form>
+  
+  
+    <h3 *ngIf="ready" class="mt-5">Result</h3>
+    <table *ngIf="ready" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Netmask</th>
+          <th scope="col">Wildcard</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{mask}}</th>
+          <td>{{wildcard}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+  
