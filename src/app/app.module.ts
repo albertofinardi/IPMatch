@@ -14,6 +14,7 @@ import { CidrCalculatorComponent } from './cidr-calculator/cidr-calculator.compo
 import { CidrToMaskComponent } from './cidr-to-mask/cidr-to-mask.component';
 import { CidrHostComponent } from './cidr-host/cidr-host.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PublicOrPrivateComponent } from './public-or-private/public-or-private.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     SubnetmaskCalculatorComponent,
     CidrCalculatorComponent,
     CidrToMaskComponent,
-    CidrHostComponent
+    CidrHostComponent,
+    PublicOrPrivateComponent
   ],
   imports: [
     BrowserModule,
